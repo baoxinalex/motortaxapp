@@ -2,7 +2,6 @@ package com.company.injection;
 
 import com.company.Controller;
 import com.company.calculation.TesterCalcService;
-import static com.company.Controller.taxi;
 
 
 public class TesterMenuInjector {

@@ -6,9 +6,11 @@ import com.company.plate.Plate;
  * Created by BaoX on 24/11/2017.
  */
 public class Vehicle {
+
+    //engine capacity in L is removed as it's not used for calculation and it's automatically converted into cc during the controller.
     public Plate plate;
     public double engineCapacityinCC;
-    public double engineCapacityinL;
+    //public double engineCapacityinL;
     public String type;
 
     public Vehicle(Plate plate, double engineCapacityinCC, String type) {
@@ -33,19 +35,13 @@ public class Vehicle {
         this.engineCapacityinCC = engineCapacityinCC;
     }
 
-    public double getEngineCapacityinL() {
-        return engineCapacityinCC/1000;
-    }
-
-    public void setEngineCapacityinL(double engineCapacityinL) {
-        this.engineCapacityinL= engineCapacityinCC/1000;
-    }
-
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        if (type.equals(VehicleType.values()) ) {
+            this.type = type;
+        }
     }
 }

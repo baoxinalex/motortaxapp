@@ -1,61 +1,85 @@
 package com.company;
 
 import com.company.plate.Plate;
+import com.company.plate.PlateValidator;
 
 import java.text.DecimalFormat;
 //to be completed
-public class MenuValidator {
-    static View view = new View();
+public class MenuValidator{
+    public static View view = new View();
 
-    public static boolean engineCapacityVld() {
-        if (view.engineCC() >= 1000)
-            return false;
-        else
+    public static boolean engineCapacityCCVld(double cc) {
+        if (cc >= 1000)
             return true;
+        else
+            return false;
     }
 
-    public boolean emissionVld() {
-        if (view.privateCarEmission() > 0)
-            return false;
-        else
+    public static boolean engineCapacityLrVld(double lr) {
+        if (lr >0)
             return true;
+        else
+            return false;
     }
 
-    public boolean lorryWheelNumVld() {
-        int i = view.lorryWheelNum();
-        if (i > 4 && i < 12 && i % 2 == 0)
-            return false;
-        else
-            return true;
-    }
-
-    public boolean lorryUnloadedWeightVld() {
-        double i = view.lorryUnloadedWeight();
-        DecimalFormat decimalFormat = new DecimalFormat();
-        if (i>0)
-            return false;
-        else
-            return true;
-    }
-
-    public Plate plateTransformer(){
-        Plate plate;
-        String plateNum= view.plate();
-        //by default validated is false, it will be true after validation
-        boolean validated=false;
-        //split the plateString into several strings, each string is a parameter for plate object
-        String[] plateString = plateNum.split("-");
-        //if the first string has three character such as 151, then further spilt it to 15 and 1
-        if(plateString[0].length()==3){
-            String regYear=plateString[0].substring(0,2).toString();
-            String halfYear=plateString[0].substring(2).toString();
-            plate = new Plate(regYear,halfYear, plateString[1], plateString[2],validated);
-            return plate;
+    public boolean emissionVld(int emission) {
+        try {
+            if (emission > 0)
+                return true;
         }
-        else {
-            plate = new Plate(plateString[0],plateString[1],plateString[2],validated);
-            return plate;
+        catch (NumberFormatException e){
+            System.out.println("Please enter a whole number for emission");
         }
-
+        return false;
     }
+
+    public boolean lorryWheelNumVld(int wheelNum) {
+        try {
+            if (wheelNum > 4 && wheelNum < 12 && wheelNum % 2 == 0)
+                return true;
+        }
+        catch (NumberFormatException e){
+            System.out.println("Please enter an even number value between 4 and 12");
+        }
+        return false;
+    }
+
+    //not completed
+    public boolean lorryUnloadedWeightVld(double unloadedWeight) {
+        double i = unloadedWeight;
+        //accept max 2 decimals
+        DecimalFormat decimalFormat = new DecimalFormat(".00");
+        try {
+            if (i > 0)
+                return true;
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Please enter a number");
+        }
+        return false;
+    }
+
+    public boolean taxiPassnumVlid(int passNum){
+        try{
+            if(passNum<=10 && passNum>0){
+            return true;
+            }
+        }
+        catch (NumberFormatException e){
+            System.out.println("Please enter an integer value");
+        }
+        return false;
+    }
+
+    public boolean menuOptionWithinRange(int range, String input){
+        try{
+            if(Integer.parseInt(input)>0&&Integer.parseInt(input)<=range){
+            return true;
+        }
+        }catch (NumberFormatException e){
+            System.out.println("Please enter an integer value");
+        }
+        return false;
+    }
+
 }

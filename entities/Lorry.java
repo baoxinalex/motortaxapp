@@ -7,9 +7,9 @@ import com.company.plate.Plate;
  */
 public class Lorry extends Vehicle {
     private int wheelNum;
-    private float unloadedWeight;
+    private double unloadedWeight;
 
-    public Lorry(Plate plate, double engineCapacityinCC, String type, int wheelNum, float unloadedWeight) {
+    public Lorry(Plate plate, double engineCapacityinCC, String type, int wheelNum, double unloadedWeight) {
         super(plate, engineCapacityinCC, type);
         this.unloadedWeight= unloadedWeight;
         this.wheelNum=wheelNum;
@@ -23,7 +23,7 @@ public class Lorry extends Vehicle {
         this.wheelNum = wheelNum;
     }
 
-    public float getUnloadedWeight() {
+    public double getUnloadedWeight() {
         return unloadedWeight;
     }
 

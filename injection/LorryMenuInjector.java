@@ -1,4 +1,12 @@
 package com.company.injection;
 
-public class LorryMenuInjector {
+import com.company.Controller;
+import com.company.calculation.LorryCalcService;
+
+public class LorryMenuInjector implements CalcMenuInjector{
+
+    @Override
+    public Controller getController() {
+        return new Controller(new LorryCalcService());
+    }
 }

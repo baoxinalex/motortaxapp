@@ -1,8 +1,10 @@
 package com.company.plate;
 
+import java.time.LocalDate;
+
 public class Plate {
     private String regYear;
-    private String regaHalfYear;
+    private String regHalfYear;
     private String countyCode;
     private String seqNum;
     private boolean validated;
@@ -14,9 +16,9 @@ public class Plate {
         this.validated = validated;
     }
 
-    public Plate(String regYear, String regaHalfYear, String countyCode, String seqNum, boolean validated) {
+    public Plate(String regYear, String regHalfYear, String countyCode, String seqNum, boolean validated) {
         this.regYear = regYear;
-        this.regaHalfYear = regaHalfYear;
+        this.regHalfYear = regHalfYear;
         this.countyCode = countyCode;
         this.seqNum = seqNum;
         this.validated = validated;
@@ -30,12 +32,12 @@ public class Plate {
         this.regYear = regYear;
     }
 
-    public String getRegaHalfYear() {
-        return regaHalfYear;
+    public String getRegHalfYear() {
+        return regHalfYear;
     }
 
-    public void setRegaHalfYear(String regaHalfYear) {
-        this.regaHalfYear = regaHalfYear;
+    public void setRegHalfYear(String regaHalfYear) {
+        this.regHalfYear = regaHalfYear;
     }
 
     public String getCountyCode() {
@@ -61,4 +63,24 @@ public class Plate {
     public void setValidated(boolean validated) {
         this.validated = validated;
     }
+
+    //validation conditions should be replaced with platevalidator, also plates should be validated before passing calculation.
+    @Override
+    public String toString() {
+        int regYearInteger = Integer.parseInt(this.getRegYear());
+        String plateNum = null;
+        if (regYearInteger >= 13 && regYearInteger < LocalDate.now().getYear()) {
+            plateNum = this.getRegYear() + this.getRegHalfYear() +"-"+ this.getCountyCode() +"-"+ this.getSeqNum();
+            return plateNum;
+        }
+        else if(regYearInteger<=12 || regYearInteger>87 && regYearInteger<100){
+            plateNum = this.getRegYear()+"-"+this.getCountyCode()+"-"+this.getSeqNum();
+            return plateNum;
+        }
+        else{
+            return "unvalidated_plate";
+        }
+
+    }
+
 }
