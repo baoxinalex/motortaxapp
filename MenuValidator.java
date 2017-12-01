@@ -46,14 +46,14 @@ public class MenuValidator{
 
     //not completed
     public boolean lorryUnloadedWeightVld(double unloadedWeight) {
-        double i = unloadedWeight;
-        //accept max 2 decimals
-        DecimalFormat decimalFormat = new DecimalFormat(".00");
+        //auto convert numbers more than 2 decimal to 2 decimals
+        DecimalFormat df = new DecimalFormat("0.00");
         try {
+            double i = Double.parseDouble(df.format(unloadedWeight));
             if (i > 0)
                 return true;
         }
-        catch (NumberFormatException e) {
+        catch (Exception e) {
             System.out.println("Please enter a number");
         }
         return false;
