@@ -35,7 +35,7 @@ public class MenuValidator{
 
     public boolean lorryWheelNumVld(int wheelNum) {
         try {
-            if (wheelNum > 4 && wheelNum < 12 && wheelNum % 2 == 0)
+            if (wheelNum >= 4 && wheelNum < 12 && wheelNum % 2 == 0)
                 return true;
         }
         catch (NumberFormatException e){
@@ -47,7 +47,7 @@ public class MenuValidator{
     //not completed
     public boolean lorryUnloadedWeightVld(double unloadedWeight) {
         //auto convert numbers more than 2 decimal to 2 decimals
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("#.00");
         try {
             double i = Double.parseDouble(df.format(unloadedWeight));
             if (i > 0)
