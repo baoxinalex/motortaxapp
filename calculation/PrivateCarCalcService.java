@@ -7,38 +7,32 @@ import com.company.plate.Plate;
 public class PrivateCarCalcService implements CalcService {
 
     @Override
-    public <T extends Vehicle>double calculateTax(T t) {
+    public double calculateTax(Vehicle privateCar) {
 
 
-        PrivateCar privateCar = (PrivateCar) t;
-        Plate plate =privateCar.getPlate();
         double result=-1;
-
-        if(plate.isValidated() ) {
-            if (privateCar.getRegAfterJuly08()) {
-                if(privateCar.getEngineCapacityinCC()>2000) {
-                    result = taxOnEmission(privateCar)*1.2;
+        if (privateCar instanceof PrivateCar) {
+            PrivateCar privateCar1 = (PrivateCar) privateCar;
+            if (privateCar1.getRegAfterJuly08()) {
+                if (privateCar.getEngineCapacityinCC() > 2000) {
+                    result = taxOnEmission(privateCar1) * 1.2;
                     return result;
-                }else{
-                    result = taxOnEmission(privateCar);
-                    return result;
-                }
-            }
-            else {
-                if(privateCar.getEngineCapacityinCC()>2000){
-                    result = taxOnEngine(privateCar)*1.2;
+                } else {
+                    result = taxOnEmission(privateCar1);
                     return result;
                 }
-                else{
-                    result =taxOnEngine(privateCar);
+            } else {
+                if (privateCar1.getEngineCapacityinCC() > 2000) {
+                    result = taxOnEngine(privateCar1) * 1.2;
+                    return result;
+                } else {
+                    result = taxOnEngine(privateCar1);
                     return result;
                 }
 
             }
         }
-        else
-            //maybe here should return an exception to handle the plate that not validated
-            return result;
+        return result;
     }
 
     public double taxOnEmission(PrivateCar privateCar){

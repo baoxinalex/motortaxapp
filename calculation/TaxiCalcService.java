@@ -7,16 +7,14 @@ import com.company.plate.Plate;
 
 public class TaxiCalcService implements CalcService {
 
-
     @Override
-    public <T extends Vehicle> double calculateTax(T t) {
-        Taxi taxi = (Taxi) t;
-        Plate plate = taxi.getPlate();
+    public double calculateTax(Vehicle taxi) {
         double result = -1;
         //needs to replaced by try catch method to printout error message
-        if (plate.isValidated()) {
-            if (taxi.getPassengerNum() >= 1 && taxi.getPassengerNum() <= 10) {
-                result = 0.1 * taxi.engineCapacityinCC + 10 * taxi.getPassengerNum();
+        if (taxi instanceof Taxi) {
+            Taxi taxi1 = (Taxi) taxi;
+            if (taxi1.getPassengerNum() >= 1 && taxi1.getPassengerNum() <= 10) {
+                result = 0.1 * taxi1.getEngineCapacityinCC() + 10 * taxi1.getPassengerNum();
                 return result;
             }
         }

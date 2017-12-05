@@ -1,22 +1,20 @@
 package com.company;
 
-import com.company.plate.Plate;
-import com.company.plate.PlateValidator;
-
 import java.text.DecimalFormat;
-//to be completed
-public class MenuValidator{
-    public static View view = new View();
 
-    public static boolean engineCapacityCCVld(double cc) {
-        if (cc >= 1000)
+public class MenuValidator{
+
+    public boolean platePatternVld(String plateNum){
+        String pattern="^(8[789]|(9[0-9]|0[0-9]|1[0-2]|1[3-7][12]))[?:-]?[C|CE|CN|CW|D|DL|G|KE|KK|KY|L|LD|LH|LK|LM|LS|MH|MN|MO|OY|RN|SO|TN|TS|W|WD|WH|WX|WW|c|ce|cn|cw|d|dl|g|ke|kk|ky|l|ld|lh|lk|lm|ls|mh|mn|mo|oy|rn|so|tn|ts|w|wd|wh|wx|ww]?[?:-]?[1-9][0-9]{0,5}$";
+        if(plateNum.matches(pattern)){
             return true;
-        else
-            return false;
+        }
+        System.out.println("The plate you entered is not valid, please double check and enter again.");
+        return false;
     }
 
-    public static boolean engineCapacityLrVld(double lr) {
-        if (lr >0)
+    public boolean engineCapacityCCVld(double cc) {
+        if (cc >= 1000)
             return true;
         else
             return false;
@@ -44,7 +42,6 @@ public class MenuValidator{
         return false;
     }
 
-    //not completed
     public boolean lorryUnloadedWeightVld(double unloadedWeight) {
         //auto convert numbers more than 2 decimal to 2 decimals
         DecimalFormat df = new DecimalFormat("#.00");

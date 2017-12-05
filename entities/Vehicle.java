@@ -2,21 +2,15 @@ package com.company.entities;
 
 import com.company.plate.Plate;
 
-/**
- * Created by BaoX on 24/11/2017.
- */
 public class Vehicle {
 
     //engine capacity in L is removed as it's not used for calculation and it's automatically converted into cc during the controller.
-    public Plate plate;
-    public double engineCapacityinCC;
-    //public double engineCapacityinL;
-    public String type;
+    private Plate plate;
+    private double engineCapacityinCC;
 
-    public Vehicle(Plate plate, double engineCapacityinCC, String type) {
+    public Vehicle(Plate plate, double engineCapacityinCC) {
         this.plate = plate;
         this.engineCapacityinCC = engineCapacityinCC;
-        this.type = type;
     }
 
     public Plate getPlate() {
@@ -33,15 +27,5 @@ public class Vehicle {
 
     public void setEngineCapacityinCC(double engineCapacityinCC) {
         this.engineCapacityinCC = engineCapacityinCC;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        if (type.equals(VehicleType.values()) ) {
-            this.type = type;
-        }
     }
 }

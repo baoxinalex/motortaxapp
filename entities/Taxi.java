@@ -8,8 +8,8 @@ import com.company.plate.Plate;
 public class Taxi extends Vehicle{
     private int passengerNum;
 
-    public Taxi(Plate plate, double engineCapacityinCC, String type, int passengerNum) {
-        super(plate, engineCapacityinCC, type);
+    public Taxi(Plate plate, double engineCapacityinCC, int passengerNum) {
+        super(plate, engineCapacityinCC);
         this.passengerNum=passengerNum;
     }
 

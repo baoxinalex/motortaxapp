@@ -9,8 +9,8 @@ public class Lorry extends Vehicle {
     private int wheelNum;
     private double unloadedWeight;
 
-    public Lorry(Plate plate, double engineCapacityinCC, String type, int wheelNum, double unloadedWeight) {
-        super(plate, engineCapacityinCC, type);
+    public Lorry(Plate plate, double engineCapacityinCC, int wheelNum, double unloadedWeight) {
+        super(plate, engineCapacityinCC);
         this.unloadedWeight= unloadedWeight;
         this.wheelNum=wheelNum;
     }

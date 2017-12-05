@@ -9,8 +9,8 @@ public class PrivateCar extends Vehicle {
     private int emission;
     private boolean regAfterJuly08;
 
-    public PrivateCar(Plate plate, double engineCapacityinCC, String type, int emission, boolean regAfterJuly08) {
-        super(plate, engineCapacityinCC, type);
+    public PrivateCar(Plate plate, double engineCapacityinCC, int emission, boolean regAfterJuly08) {
+        super(plate, engineCapacityinCC);
         this.emission= emission;
         this.regAfterJuly08=regAfterJuly08;
     }
